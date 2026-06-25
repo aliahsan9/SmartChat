@@ -12,7 +12,8 @@ public static class ServiceCollectionExtensions
     {
         services.Configure(configure);
 
-        services.AddScoped<IChatService, OpenAIChatService>();
+        services.AddScoped<IChatService,
+            FakeChatService>();
 
         return services;
     }

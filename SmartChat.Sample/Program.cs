@@ -3,8 +3,18 @@ using SmartChat.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+// Services
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new()
+    {
+        Title = "SmartChat API",
+        Version = "v1",
+        Description = "Lightweight AI Chat API built with SmartChat"
+    });
+});
 
 builder.Services.AddSmartChat(options =>
 {
@@ -13,16 +23,49 @@ builder.Services.AddSmartChat(options =>
 
 var app = builder.Build();
 
+// Middleware
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.DocumentTitle = "SmartChat API";
+        options.SwaggerEndpoint(
+            "/swagger/v1/swagger.json",
+            "SmartChat API v1");
+
+        options.RoutePrefix = string.Empty;
+    });
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// System Endpoints
 
-app.MapControllers();
+app.MapGet("/", () =>
+{
+    return Results.Ok(new
+    {
+        Name = "SmartChat",
+        Version = "1.0.0",
+        Status = "Running"
+    });
+})
+.WithName("Root")
+.WithTags("System");
+
+app.MapGet("/health", () =>
+{
+    return Results.Ok(new
+    {
+        Status = "Healthy",
+        Timestamp = DateTime.UtcNow
+    });
+})
+.WithName("Health")
+.WithTags("System");
+
+// SmartChat Endpoints
 
 app.MapSmartChat();
 
