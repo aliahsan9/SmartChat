@@ -1,0 +1,6 @@
+@SmartChat.Sample_HostAddress = http://localhost:5104
+
+GET {{SmartChat.Sample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

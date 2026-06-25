@@ -1,0 +1,21 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using SmartChat.Core.Options;
+using SmartChat.Core.Services;
+
+namespace SmartChat.Core
+{
+    public static class ServiceCollectionExtensions
+    {
+        public static IServiceCollection AddSmartChat(
+            this IServiceCollection services,
+            Action<SmartChatOptions> configure)
+        {
+            services.Configure(configure);
+
+            services.AddScoped<IChatService,
+                OpenAIChatService>();
+
+            return services;
+        }
+    }
+}

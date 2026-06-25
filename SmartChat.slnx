@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SmartChat.Core/SmartChat.Core.csproj" />
+  <Project Path="SmartChat.Sample/SmartChat.Sample.csproj" />
+  <Project Path="SmartChat.Web/SmartChat.Web.csproj" />
+</Solution>
