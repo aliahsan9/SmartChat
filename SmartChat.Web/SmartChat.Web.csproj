@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\SmartChat.Core\SmartChat.Core.csproj" />
+		<ProjectReference Include="..\SmartChat.OpenAI\SmartChat.OpenAI.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

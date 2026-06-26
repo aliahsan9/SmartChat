@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="SmartChat.Core/SmartChat.Core.csproj" />
+  <Project Path="SmartChat.OpenAI/SmartChat.OpenAI.csproj" Id="ded48d64-5bc2-4430-861b-87b679a531a0" />
   <Project Path="SmartChat.Sample/SmartChat.Sample.csproj" />
   <Project Path="SmartChat.Web/SmartChat.Web.csproj" />
 </Solution>

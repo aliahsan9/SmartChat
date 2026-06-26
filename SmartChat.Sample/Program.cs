@@ -5,7 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Services
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new()

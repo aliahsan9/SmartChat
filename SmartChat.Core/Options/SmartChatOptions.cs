@@ -1,7 +1,8 @@
-﻿namespace SmartChat.Core.Options
+﻿namespace SmartChat.Core.Options;
+
+public sealed class SmartChatOptions
 {
-    public class SmartChatOptions
-    {
-        public string ApiKey { get; set; } = string.Empty;
-    }
+    public string ApiKey { get; set; } = string.Empty;
+
+    public string Model { get; set; } = "gpt-4.1-mini";
 }
