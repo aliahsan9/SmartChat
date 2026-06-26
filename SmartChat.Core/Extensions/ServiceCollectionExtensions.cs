@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SmartChat.Core.Options;
+using SmartChat.Core.Providers;
 using SmartChat.Core.Services;
 
 namespace SmartChat.Core.Extensions;
@@ -14,6 +15,11 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IChatService,
             FakeChatService>();
+        services.AddSingleton<IChatProvider,
+    FakeChatProvider>();
+
+        services.AddScoped<IChatService,
+            ChatService>();
 
         return services;
     }
